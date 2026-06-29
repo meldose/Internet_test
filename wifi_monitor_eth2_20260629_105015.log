@@ -1,0 +1,10 @@
+2026-06-29 10:50:15,120 INFO Starting network monitor on iface=eth2
+2026-06-29 10:50:15,120 INFO Environment mode: WSL
+2026-06-29 10:50:15,121 INFO Text log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_105015.log
+2026-06-29 10:50:15,121 INFO JSONL log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_105015.jsonl
+2026-06-29 10:50:15,121 INFO Ping targets: 1.1.1.1
+2026-06-29 10:50:15,259 INFO Initial snapshot: mode=wsl-network iface=eth2 connected=True has_ip=True ssid='' wpa_state='' nm_state='10 (unmanaged)' ip='192.168.2.36' gateway='192.168.2.1' signal_dbm='' ping=ok target=1.1.1.1 rtt_ms=28.2 dns=ok target=openai.com addresses=104.18.33.45,172.64.154.211
+2026-06-29 10:50:58,683 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:51:11,293 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:51:50,703 INFO Received signal 2, stopping monitor.
+2026-06-29 10:51:50,720 INFO Stopped network monitor on eth2. disconnects=0 reconnects=0

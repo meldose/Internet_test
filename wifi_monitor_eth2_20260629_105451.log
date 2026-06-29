@@ -1,0 +1,36 @@
+2026-06-29 10:54:51,041 INFO Starting network monitor on iface=eth2
+2026-06-29 10:54:51,041 INFO Environment mode: WSL
+2026-06-29 10:54:51,041 INFO Text log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_105451.log
+2026-06-29 10:54:51,041 INFO JSONL log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_105451.jsonl
+2026-06-29 10:54:51,041 INFO Ping targets: 1.1.1.1
+2026-06-29 10:54:51,124 INFO Initial snapshot: mode=wsl-network iface=eth2 connected=True has_ip=True ssid='' wpa_state='' nm_state='10 (unmanaged)' ip='192.168.2.36' gateway='192.168.2.1' signal_dbm='' ping=ok target=1.1.1.1 rtt_ms=28.0 dns=ok target=openai.com addresses=172.64.154.211,104.18.33.45
+2026-06-29 10:55:01,246 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:55:01,246 WARNING Loss time: current_snapshot=2026-06-29T10:55:01+02:00 previous_healthy_snapshot=2026-06-29T10:54:59+02:00
+2026-06-29 10:55:01,246 WARNING Loss point: reachability
+2026-06-29 10:55:01,246 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 10:55:01,247 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 10:55:01,247 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 10:55:01,247 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 10:56:01,361 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:56:01,361 WARNING Loss time: current_snapshot=2026-06-29T10:56:01+02:00 previous_healthy_snapshot=2026-06-29T10:56:00+02:00
+2026-06-29 10:56:01,362 WARNING Loss point: reachability
+2026-06-29 10:56:01,362 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 10:56:01,362 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 10:56:01,362 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 10:56:01,362 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 10:56:17,186 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:56:17,186 WARNING Loss time: current_snapshot=2026-06-29T10:56:17+02:00 previous_healthy_snapshot=2026-06-29T10:56:15+02:00
+2026-06-29 10:56:17,186 WARNING Loss point: reachability
+2026-06-29 10:56:17,186 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 10:56:17,186 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 10:56:17,186 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 10:56:17,186 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 10:56:20,301 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:56:20,301 WARNING Loss time: current_snapshot=2026-06-29T10:56:20+02:00 previous_healthy_snapshot=2026-06-29T10:56:19+02:00
+2026-06-29 10:56:20,301 WARNING Loss point: reachability
+2026-06-29 10:56:20,301 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 10:56:20,301 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 10:56:20,301 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 10:56:20,301 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 10:56:36,959 INFO Received signal 2, stopping monitor.
+2026-06-29 10:56:36,969 INFO Stopped network monitor on eth2. disconnects=0 reconnects=0

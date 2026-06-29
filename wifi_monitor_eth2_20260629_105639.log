@@ -1,0 +1,22 @@
+2026-06-29 10:56:39,257 INFO Starting network monitor on iface=eth2
+2026-06-29 10:56:39,257 INFO Environment mode: WSL
+2026-06-29 10:56:39,257 INFO Text log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_105639.log
+2026-06-29 10:56:39,257 INFO JSONL log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_105639.jsonl
+2026-06-29 10:56:39,257 INFO Ping targets: 1.1.1.1
+2026-06-29 10:56:39,466 INFO Initial snapshot: mode=wsl-network iface=eth2 connected=True has_ip=True ssid='' wpa_state='' nm_state='10 (unmanaged)' ip='192.168.2.36' gateway='192.168.2.1' signal_dbm='' ping=ok target=1.1.1.1 rtt_ms=58.3 dns=ok target=openai.com addresses=172.64.154.211,104.18.33.45
+2026-06-29 10:56:46,868 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:56:46,868 WARNING Loss time: current_snapshot=2026-06-29T10:56:46+02:00 previous_healthy_snapshot=2026-06-29T10:56:43+02:00
+2026-06-29 10:56:46,868 WARNING Loss point: reachability
+2026-06-29 10:56:46,868 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 10:56:46,868 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 10:56:46,868 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 10:56:46,868 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 10:58:17,897 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 10:58:17,900 WARNING Loss time: current_snapshot=2026-06-29T10:58:17+02:00 previous_healthy_snapshot=2026-06-29T10:58:14+02:00
+2026-06-29 10:58:17,900 WARNING Loss point: reachability
+2026-06-29 10:58:17,900 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 10:58:17,901 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 10:58:17,901 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 10:58:17,901 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 10:58:19,011 INFO Received signal 2, stopping monitor.
+2026-06-29 10:58:19,028 INFO Stopped network monitor on eth2. disconnects=0 reconnects=0
