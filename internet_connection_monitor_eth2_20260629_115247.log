@@ -1,0 +1,7 @@
+2026-06-29 11:52:47,936 INFO Starting internet connection monitor on iface=eth2
+2026-06-29 11:52:47,936 INFO Text log: /home/melodse/Internet_test/internet_connection_monitor_eth2_20260629_115247.log
+2026-06-29 11:52:47,937 INFO JSONL log: /home/melodse/Internet_test/internet_connection_monitor_eth2_20260629_115247.jsonl
+2026-06-29 11:52:47,937 INFO Internet targets: 1.1.1.1, 8.8.8.8
+2026-06-29 11:52:47,937 INFO DNS target: openai.com
+2026-06-29 11:52:48,085 INFO Initial snapshot: iface=eth2 ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' gateway_ping=ok target=192.168.2.1 rtt_ms=13.4 internet=ok successes=1.1.1.1,8.8.8.8 dns=ok target=openai.com addresses=172.64.154.211,104.18.33.45
+2026-06-29 11:54:37,028 INFO Stopped internet connection monitor on eth2. losses=1 restores=0
