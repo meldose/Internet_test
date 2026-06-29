@@ -1,0 +1,77 @@
+%!PS-Adobe-3.0
+%%Pages: 1
+<< /PageSize [612 792] >> setpagedevice
+/FTitle /Helvetica-Bold findfont 18 scalefont def
+/FBody /Helvetica findfont 12 scalefont def
+%%Page: 1 1
+FBody setfont
+FTitle setfont
+72 720 moveto
+(Network Issue Summary - June 29, 2026) show
+FBody setfont
+72 688 moveto
+(Summary for the network logs captured on June 29, 2026.) show
+72 672 moveto
+() show
+72 656 moveto
+(Overall conclusion:) show
+72 640 moveto
+(The issue is intermittent network loss, not a clean Wi-Fi disconnect most of the time.) show
+72 624 moveto
+(The WSL interface eth2 usually stays up, keeps the same IP address 192.168.2.36, and) show
+72 608 moveto
+(often still has the default route and DNS working.) show
+72 592 moveto
+() show
+72 576 moveto
+(What happened:) show
+72 560 moveto
+(- Several times, external internet failed while the gateway 192.168.2.1 was still) show
+72 544 moveto
+(reachable. This means the local network stayed up, but internet beyond the router) show
+72 528 moveto
+(failed.) show
+72 512 moveto
+(- A few times, the gateway itself became unreachable. This means the problem was) show
+72 496 moveto
+(between WSL/Windows and the router, or the router briefly stopped responding.) show
+72 480 moveto
+(- At least once, the default route disappeared briefly. This points to a local network) show
+72 464 moveto
+(stack or routing issue.) show
+72 448 moveto
+(- At least once, ping, gateway, and DNS all failed together, then recovered within) show
+72 432 moveto
+(about 2 seconds. This is a stronger local outage event.) show
+72 416 moveto
+() show
+72 400 moveto
+(Most important outage times:) show
+72 384 moveto
+(- 12:56:13: gateway unreachable.) show
+72 368 moveto
+(- 13:06:45: default route missing, restored at 13:06:47.) show
+72 352 moveto
+(- 13:13:34: gateway unreachable and DNS failed, restored at 13:13:36.) show
+72 336 moveto
+() show
+72 320 moveto
+(Pattern seen in the logs:) show
+72 304 moveto
+(- Local gateway instability happened a few times.) show
+72 288 moveto
+(- Internet beyond the router failed many times.) show
+72 272 moveto
+(- WSL interface eth2 stayed up, so the problem is not simply interface down.) show
+72 256 moveto
+() show
+72 240 moveto
+(Practical interpretation:) show
+72 224 moveto
+(The logs point to unstable connectivity between the machine and the router, plus) show
+72 208 moveto
+(repeated upstream internet failures after the router. This does not look like only a) show
+72 192 moveto
+(website problem, only a DNS problem, or a permanent adapter failure.) show
+showpage
+%%EOF

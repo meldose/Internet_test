@@ -1,114 +1,72 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import subprocess
 import textwrap
 from pathlib import Path
 
+
+OUTPUT_PDF = Path("network_issue_summary_20260629_readable.pdf")
+OUTPUT_PS = Path("network_issue_summary_20260629_readable.ps")
 
 PAGE_WIDTH = 612
 PAGE_HEIGHT = 792
 LEFT_MARGIN = 72
 TOP_MARGIN = 72
 BOTTOM_MARGIN = 72
+TITLE_SIZE = 18
+BODY_SIZE = 12
 LINE_HEIGHT = 16
-FONT_SIZE = 12
-TITLE_SIZE = 16
 
 
-def escape_pdf_text(value: str) -> str:
+def ps_escape(value: str) -> str:
     return value.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
 
 
-def build_pages(lines: list[str]) -> list[list[str]]:
-    max_lines = int((PAGE_HEIGHT - TOP_MARGIN - BOTTOM_MARGIN) / LINE_HEIGHT)
+def build_pages(lines: list[str], lines_first_page: int, lines_other_pages: int) -> list[list[str]]:
     pages: list[list[str]] = []
-    current: list[str] = []
-    for line in lines:
-        if len(current) >= max_lines:
-            pages.append(current)
-            current = []
-        current.append(line)
-    if current or not pages:
-        pages.append(current)
-    return pages
+    index = 0
+    while index < len(lines):
+        page_limit = lines_first_page if not pages else lines_other_pages
+        pages.append(lines[index:index + page_limit])
+        index += page_limit
+    return pages or [[]]
 
 
-def build_content_stream(page_lines: list[str], is_first_page: bool) -> bytes:
-    y_start = PAGE_HEIGHT - TOP_MARGIN
-    parts: list[str] = ["BT"]
+def build_postscript(lines: list[str]) -> str:
+    lines_first_page = int((PAGE_HEIGHT - TOP_MARGIN - BOTTOM_MARGIN - 48) / LINE_HEIGHT)
+    lines_other_pages = int((PAGE_HEIGHT - TOP_MARGIN - BOTTOM_MARGIN) / LINE_HEIGHT)
+    pages = build_pages(lines, lines_first_page, lines_other_pages)
 
-    if is_first_page:
-        parts.append(f"/F1 {TITLE_SIZE} Tf")
-        parts.append(f"{LEFT_MARGIN} {y_start} Td")
-        parts.append("(Network Issue Summary - June 29, 2026) Tj")
-        parts.append("T*")
-        parts.append(f"/F1 {FONT_SIZE} Tf")
-        parts.append("T*")
-    else:
-        parts.append(f"/F1 {FONT_SIZE} Tf")
-        parts.append(f"{LEFT_MARGIN} {y_start} Td")
+    parts: list[str] = [
+        "%!PS-Adobe-3.0",
+        f"%%Pages: {len(pages)}",
+        f"<< /PageSize [{PAGE_WIDTH} {PAGE_HEIGHT}] >> setpagedevice",
+        "/FTitle /Helvetica-Bold findfont 18 scalefont def",
+        "/FBody /Helvetica findfont 12 scalefont def",
+    ]
 
-    for line in page_lines:
-        parts.append(f"({escape_pdf_text(line)}) Tj")
-        parts.append("T*")
-    parts.append("ET")
-    return "\n".join(parts).encode("ascii", errors="ignore")
+    for page_number, page_lines in enumerate(pages, start=1):
+        parts.append(f"%%Page: {page_number} {page_number}")
+        parts.append("FBody setfont")
+        y = PAGE_HEIGHT - TOP_MARGIN
 
+        if page_number == 1:
+            parts.append("FTitle setfont")
+            parts.append(f"{LEFT_MARGIN} {y} moveto")
+            parts.append(f"({ps_escape('Network Issue Summary - June 29, 2026')}) show")
+            y -= 32
+            parts.append("FBody setfont")
 
-def write_pdf(output_path: Path, body_lines: list[str]) -> None:
-    pages = build_pages(body_lines)
+        for line in page_lines:
+            parts.append(f"{LEFT_MARGIN} {y} moveto")
+            parts.append(f"({ps_escape(line)}) show")
+            y -= LINE_HEIGHT
 
-    objects: list[bytes] = []
-    objects.append(b"<< /Type /Catalog /Pages 2 0 R >>")
-    objects.append(b"")
-    objects.append(b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>")
+        parts.append("showpage")
 
-    page_object_ids: list[int] = []
-    content_object_ids: list[int] = []
-
-    next_object_id = 4
-    for index, page_lines in enumerate(pages):
-        page_object_ids.append(next_object_id)
-        content_object_ids.append(next_object_id + 1)
-        next_object_id += 2
-        objects.append(b"")
-        objects.append(build_content_stream(page_lines, is_first_page=(index == 0)))
-
-    kids = " ".join(f"{obj_id} 0 R" for obj_id in page_object_ids)
-    objects[1] = f"<< /Type /Pages /Kids [ {kids} ] /Count {len(page_object_ids)} >>".encode("ascii")
-
-    for idx, page_object_id in enumerate(page_object_ids):
-        content_object_id = content_object_ids[idx]
-        objects[page_object_id - 1] = (
-            f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {PAGE_WIDTH} {PAGE_HEIGHT}] "
-            f"/Resources << /Font << /F1 3 0 R >> >> /Contents {content_object_id} 0 R >>"
-        ).encode("ascii")
-        stream = objects[content_object_id - 1]
-        objects[content_object_id - 1] = (
-            f"<< /Length {len(stream)} >>\nstream\n".encode("ascii") + stream + b"\nendstream"
-        )
-
-    pdf = bytearray(b"%PDF-1.4\n")
-    offsets = [0]
-    for object_number, payload in enumerate(objects, start=1):
-        offsets.append(len(pdf))
-        pdf.extend(f"{object_number} 0 obj\n".encode("ascii"))
-        pdf.extend(payload)
-        pdf.extend(b"\nendobj\n")
-
-    xref_offset = len(pdf)
-    pdf.extend(f"xref\n0 {len(objects) + 1}\n".encode("ascii"))
-    pdf.extend(b"0000000000 65535 f \n")
-    for offset in offsets[1:]:
-        pdf.extend(f"{offset:010d} 00000 n \n".encode("ascii"))
-    pdf.extend(
-        (
-            f"trailer\n<< /Size {len(objects) + 1} /Root 1 0 R >>\n"
-            f"startxref\n{xref_offset}\n%%EOF\n"
-        ).encode("ascii")
-    )
-
-    output_path.write_bytes(pdf)
+    parts.append("%%EOF")
+    return "\n".join(parts) + "\n"
 
 
 def main() -> None:
@@ -121,14 +79,14 @@ def main() -> None:
         "has the default route and DNS working.",
         "",
         "What happened:",
-        "- Several times, external internet failed while the gateway 192.168.2.1 was still reachable.",
-        "  This means the local network stayed up, but internet beyond the router failed.",
-        "- A few times, the gateway itself became unreachable.",
-        "  This means the problem was between WSL/Windows and the router, or the router briefly stopped responding.",
-        "- At least once, the default route disappeared briefly.",
-        "  This points to a local network stack or routing issue.",
-        "- At least once, ping, gateway, and DNS all failed together, then recovered within about 2 seconds.",
-        "  This is a stronger local outage event.",
+        "- Several times, external internet failed while the gateway 192.168.2.1 was still reachable. "
+        "This means the local network stayed up, but internet beyond the router failed.",
+        "- A few times, the gateway itself became unreachable. This means the problem was between "
+        "WSL/Windows and the router, or the router briefly stopped responding.",
+        "- At least once, the default route disappeared briefly. This points to a local network stack "
+        "or routing issue.",
+        "- At least once, ping, gateway, and DNS all failed together, then recovered within about 2 seconds. "
+        "This is a stronger local outage event.",
         "",
         "Most important outage times:",
         "- 12:56:13: gateway unreachable.",
@@ -141,9 +99,9 @@ def main() -> None:
         "- WSL interface eth2 stayed up, so the problem is not simply interface down.",
         "",
         "Practical interpretation:",
-        "The logs point to unstable connectivity between the machine and the router, plus repeated upstream internet "
-        "failures after the router. This does not look like only a website problem, only a DNS problem, or a permanent "
-        "adapter failure.",
+        "The logs point to unstable connectivity between the machine and the router, plus repeated upstream "
+        "internet failures after the router. This does not look like only a website problem, only a DNS problem, "
+        "or a permanent adapter failure.",
     ]
 
     wrapped_lines: list[str] = []
@@ -151,10 +109,10 @@ def main() -> None:
         if not paragraph:
             wrapped_lines.append("")
             continue
-        wrapped_lines.extend(textwrap.wrap(paragraph, width=88) or [""])
+        wrapped_lines.extend(textwrap.wrap(paragraph, width=86))
 
-    output_path = Path("network_issue_summary_20260629.pdf")
-    write_pdf(output_path, wrapped_lines)
+    OUTPUT_PS.write_text(build_postscript(wrapped_lines), encoding="utf-8")
+    subprocess.run(["ps2pdf", str(OUTPUT_PS), str(OUTPUT_PDF)], check=True)
 
 
 if __name__ == "__main__":
