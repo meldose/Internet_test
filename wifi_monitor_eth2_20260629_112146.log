@@ -1,0 +1,8 @@
+2026-06-29 11:21:46,685 INFO Starting network monitor on iface=eth2
+2026-06-29 11:21:46,685 INFO Environment mode: WSL
+2026-06-29 11:21:46,686 INFO Text log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_112146.log
+2026-06-29 11:21:46,686 INFO JSONL log: /home/melodse/Internet_test/wifi_monitor_eth2_20260629_112146.jsonl
+2026-06-29 11:21:46,686 INFO Ping targets: 1.1.1.1, 8.8.8.8
+2026-06-29 11:21:46,789 INFO Initial snapshot: mode=wsl-network iface=eth2 connected=True has_ip=True ssid='' wpa_state='' nm_state='10 (unmanaged)' ip='192.168.2.36' gateway='192.168.2.1' gateway_ping=ok target=192.168.2.1 rtt_ms=2.74 signal_dbm='' ping=ok target=1.1.1.1 rtt_ms=27.4 dns=ok target=openai.com addresses=104.18.33.45,172.64.154.211
+2026-06-29 11:22:10,967 INFO Received signal 2, stopping monitor.
+2026-06-29 11:22:10,989 INFO Stopped network monitor on eth2. disconnects=0 reconnects=0
