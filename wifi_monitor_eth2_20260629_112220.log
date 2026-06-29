@@ -74,3 +74,127 @@
 2026-06-29 11:27:06,916 WARNING route: default via 192.168.2.1 dev eth2
 2026-06-29 11:27:06,916 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
 2026-06-29 11:27:06,916 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:41:00,190 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:41:00,191 WARNING Loss time: current_snapshot=2026-06-29T11:41:00+02:00 previous_healthy_snapshot=2026-06-29T11:40:57+02:00
+2026-06-29 11:41:00,191 WARNING Loss point: reachability
+2026-06-29 11:41:00,192 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:41:00,192 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=7.71 error=
+2026-06-29 11:41:00,192 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:41:00,192 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:41:00,192 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:41:00,193 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:41:47,687 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:41:47,687 WARNING Loss time: current_snapshot=2026-06-29T11:41:47+02:00 previous_healthy_snapshot=2026-06-29T11:41:44+02:00
+2026-06-29 11:41:47,687 WARNING Loss point: reachability
+2026-06-29 11:41:47,687 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:41:47,687 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=6.15 error=
+2026-06-29 11:41:47,687 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:41:47,687 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:41:47,687 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:41:47,687 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:42:39,713 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:42:39,713 WARNING Loss time: current_snapshot=2026-06-29T11:42:39+02:00 previous_healthy_snapshot=2026-06-29T11:42:36+02:00
+2026-06-29 11:42:39,713 WARNING Loss point: reachability
+2026-06-29 11:42:39,714 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:42:39,714 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=15.7 error=
+2026-06-29 11:42:39,714 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:42:39,714 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:42:39,714 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:42:39,714 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:43:06,674 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:43:06,674 WARNING Loss time: current_snapshot=2026-06-29T11:43:06+02:00 previous_healthy_snapshot=2026-06-29T11:43:03+02:00
+2026-06-29 11:43:06,674 WARNING Loss point: reachability
+2026-06-29 11:43:06,674 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:43:06,675 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=11.6 error=
+2026-06-29 11:43:06,675 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:43:06,675 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:43:06,675 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:43:06,675 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:44:06,239 WARNING CONNECTION LOST detected on eth2
+2026-06-29 11:44:06,239 WARNING Loss time: current_snapshot=2026-06-29T11:44:06+02:00 previous_healthy_snapshot=2026-06-29T11:44:01+02:00
+2026-06-29 11:44:06,239 WARNING Loss point: reachability-and-dns
+2026-06-29 11:44:06,239 WARNING Previous state: connected=True ssid='' ip='192.168.2.36' ping_ok=True dns_ok=True
+2026-06-29 11:44:06,239 WARNING Current state: connected=True ssid='' ip='192.168.2.36' operstate='up' carrier='1' ping_ok=False dns_ok=False
+2026-06-29 11:44:06,239 WARNING Interface still reports link up, but usable connectivity was lost on eth2
+2026-06-29 11:44:06,239 WARNING Inferred reason: Both ping reachability and DNS resolution failed (wsl-host-network)
+2026-06-29 11:44:06,239 WARNING ip -brief: eth2 UP 192.168.2.36
+2026-06-29 11:44:06,239 WARNING dns server: 10.255.255.254
+2026-06-29 11:44:06,239 WARNING dns probe: target=openai.com error=command timed out
+2026-06-29 11:44:06,239 WARNING gateway probe: target=192.168.2.1 ok=False rtt_ms=None error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:44:06,240 WARNING Connectivity scope: Gateway 192.168.2.1 is unreachable from eth2 (gateway)
+2026-06-29 11:44:06,240 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:44:06,240 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:44:06,240 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:44:10,696 INFO RECONNECTED iface=eth2 ip='192.168.2.36' gateway='192.168.2.1' signal_dbm=''
+2026-06-29 11:44:10,697 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:44:10,697 WARNING Loss time: current_snapshot=2026-06-29T11:44:10+02:00 previous_healthy_snapshot=2026-06-29T11:44:06+02:00
+2026-06-29 11:44:10,697 WARNING Loss point: reachability
+2026-06-29 11:44:10,697 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:44:10,697 WARNING gateway probe: target=192.168.2.1 ok=False rtt_ms=None error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:44:10,697 WARNING Connectivity scope: Gateway 192.168.2.1 is unreachable from eth2 (gateway)
+2026-06-29 11:44:10,697 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:44:10,697 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:44:10,697 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:44:13,828 WARNING CONNECTION LOST detected on eth2
+2026-06-29 11:44:13,828 WARNING Loss time: current_snapshot=2026-06-29T11:44:13+02:00 previous_healthy_snapshot=2026-06-29T11:44:10+02:00
+2026-06-29 11:44:13,828 WARNING Loss point: routing
+2026-06-29 11:44:13,828 WARNING Previous state: connected=True ssid='' ip='192.168.2.36' ping_ok=False dns_ok=True
+2026-06-29 11:44:13,828 WARNING Current state: connected=True ssid='' ip='192.168.2.36' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:44:13,828 WARNING Interface still reports link up, but usable connectivity was lost on eth2
+2026-06-29 11:44:13,829 WARNING Inferred reason: Default route disappeared while the interface still looked up (route-missing)
+2026-06-29 11:44:13,829 WARNING ip -brief: eth2 UP 192.168.2.36
+2026-06-29 11:44:13,829 WARNING dns server: 10.255.255.254
+2026-06-29 11:44:13,829 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=4.96 error=
+2026-06-29 11:44:13,829 WARNING Connectivity scope: Default route is missing (routing)
+2026-06-29 11:44:14,549 INFO RECONNECTED iface=eth2 ip='192.168.2.36' gateway='192.168.2.1' signal_dbm=''
+2026-06-29 11:44:24,120 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:44:24,120 WARNING Loss time: current_snapshot=2026-06-29T11:44:24+02:00 previous_healthy_snapshot=2026-06-29T11:44:21+02:00
+2026-06-29 11:44:24,120 WARNING Loss point: reachability
+2026-06-29 11:44:24,120 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:44:24,121 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=10.2 error=
+2026-06-29 11:44:24,121 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:44:24,121 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:44:24,121 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:44:24,121 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:47:07,006 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:47:07,006 WARNING Loss time: current_snapshot=2026-06-29T11:47:07+02:00 previous_healthy_snapshot=2026-06-29T11:47:03+02:00
+2026-06-29 11:47:07,006 WARNING Loss point: reachability
+2026-06-29 11:47:07,007 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:47:07,007 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=7.43 error=
+2026-06-29 11:47:07,007 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:47:07,007 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:47:07,007 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:47:07,007 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:48:07,162 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:48:07,162 WARNING Loss time: current_snapshot=2026-06-29T11:48:07+02:00 previous_healthy_snapshot=2026-06-29T11:48:04+02:00
+2026-06-29 11:48:07,162 WARNING Loss point: reachability
+2026-06-29 11:48:07,162 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:48:07,162 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=3.38 error=
+2026-06-29 11:48:07,162 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:48:07,162 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:48:07,162 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:48:07,163 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:51:25,126 WARNING CONNECTIVITY probe failed while interface still appears connected: iface=eth2 target=1.1.1.1 error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:51:25,126 WARNING Loss time: current_snapshot=2026-06-29T11:51:25+02:00 previous_healthy_snapshot=2026-06-29T11:51:21+02:00
+2026-06-29 11:51:25,126 WARNING Loss point: reachability
+2026-06-29 11:51:25,127 WARNING Current state: ip='192.168.2.36' gateway='192.168.2.1' operstate='up' carrier='1' ping_ok=False dns_ok=True
+2026-06-29 11:51:25,127 WARNING gateway probe: target=192.168.2.1 ok=True rtt_ms=3.18 error=
+2026-06-29 11:51:25,127 WARNING Connectivity scope: Gateway is reachable and DNS works, but internet reachability failed (internet)
+2026-06-29 11:51:25,127 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:51:25,127 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:51:25,127 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
+2026-06-29 11:51:37,246 WARNING CONNECTION LOST detected on eth2
+2026-06-29 11:51:37,248 WARNING Loss time: current_snapshot=2026-06-29T11:51:37+02:00 previous_healthy_snapshot=2026-06-29T11:51:32+02:00
+2026-06-29 11:51:37,248 WARNING Loss point: reachability-and-dns
+2026-06-29 11:51:37,249 WARNING Previous state: connected=True ssid='' ip='192.168.2.36' ping_ok=True dns_ok=True
+2026-06-29 11:51:37,249 WARNING Current state: connected=True ssid='' ip='192.168.2.36' operstate='up' carrier='1' ping_ok=False dns_ok=False
+2026-06-29 11:51:37,249 WARNING Interface still reports link up, but usable connectivity was lost on eth2
+2026-06-29 11:51:37,249 WARNING Inferred reason: Both ping reachability and DNS resolution failed (wsl-host-network)
+2026-06-29 11:51:37,249 WARNING ip -brief: eth2 UP 192.168.2.36
+2026-06-29 11:51:37,249 WARNING dns server: 10.255.255.254
+2026-06-29 11:51:37,249 WARNING dns probe: target=openai.com error=command timed out
+2026-06-29 11:51:37,249 WARNING gateway probe: target=192.168.2.1 ok=False rtt_ms=None error=1 packets transmitted, 0 received, 100% packet loss, time 0ms
+2026-06-29 11:51:37,249 WARNING Connectivity scope: Gateway 192.168.2.1 is unreachable from eth2 (gateway)
+2026-06-29 11:51:37,249 WARNING route: default via 192.168.2.1 dev eth2
+2026-06-29 11:51:37,249 WARNING route: 192.168.2.0/255.255.255.0 dev eth2 flags=0x1
+2026-06-29 11:51:37,249 WARNING route: 192.168.2.1/255.255.255.255 dev eth2 flags=0x5
