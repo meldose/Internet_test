@@ -1,5 +1,5 @@
 %!PS-Adobe-3.0
-%%Pages: 1
+%%Pages: 2
 << /PageSize [612 792] >> setpagedevice
 /FTitle /Helvetica-Bold findfont 18 scalefont def
 /FBody /Helvetica findfont 12 scalefont def
@@ -46,32 +46,63 @@ FBody setfont
 72 416 moveto
 () show
 72 400 moveto
-(Most important outage times:) show
+(Times when internet was lost while the gateway was still reachable:) show
 72 384 moveto
-(- 12:56:13: gateway unreachable.) show
+(- 12:57:08) show
 72 368 moveto
-(- 13:06:45: default route missing, restored at 13:06:47.) show
+(- 12:58:38) show
 72 352 moveto
-(- 13:13:34: gateway unreachable and DNS failed, restored at 13:13:36.) show
+(- 12:59:13) show
 72 336 moveto
-() show
+(- 12:59:35) show
 72 320 moveto
-(Pattern seen in the logs:) show
+(- 12:59:45) show
 72 304 moveto
-(- Local gateway instability happened a few times.) show
+(- 13:02:55) show
 72 288 moveto
-(- Internet beyond the router failed many times.) show
+(- 13:03:12) show
 72 272 moveto
-(- WSL interface eth2 stayed up, so the problem is not simply interface down.) show
+(- 13:03:34) show
 72 256 moveto
-() show
+(- 13:11:10) show
 72 240 moveto
-(Practical interpretation:) show
+(- 13:11:43) show
 72 224 moveto
-(The logs point to unstable connectivity between the machine and the router, plus) show
+(- 13:14:33) show
 72 208 moveto
-(repeated upstream internet failures after the router. This does not look like only a) show
+(- 13:15:53) show
 72 192 moveto
+() show
+72 176 moveto
+(Most important outage times:) show
+72 160 moveto
+(- 12:56:13: gateway unreachable.) show
+72 144 moveto
+(- 13:06:45: default route missing, restored at 13:06:47.) show
+72 128 moveto
+(- 13:13:34: gateway unreachable and DNS failed, restored at 13:13:36.) show
+72 112 moveto
+() show
+showpage
+%%Page: 2 2
+FBody setfont
+72 720 moveto
+(Pattern seen in the logs:) show
+72 704 moveto
+(- Local gateway instability happened a few times.) show
+72 688 moveto
+(- Internet beyond the router failed many times.) show
+72 672 moveto
+(- WSL interface eth2 stayed up, so the problem is not simply interface down.) show
+72 656 moveto
+() show
+72 640 moveto
+(Practical interpretation:) show
+72 624 moveto
+(The logs point to unstable connectivity between the machine and the router, plus) show
+72 608 moveto
+(repeated upstream internet failures after the router. This does not look like only a) show
+72 592 moveto
 (website problem, only a DNS problem, or a permanent adapter failure.) show
 showpage
 %%EOF

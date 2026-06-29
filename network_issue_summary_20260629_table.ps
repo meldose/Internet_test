@@ -1,0 +1,79 @@
+%!PS-Adobe-3.0
+%%Pages: 1
+<< /PageSize [612 792] >> setpagedevice
+/FTitle /Helvetica-Bold findfont 18 scalefont def
+/FBody /Helvetica findfont 12 scalefont def
+%%Page: 1 1
+FBody setfont
+FTitle setfont
+72 720 moveto
+(Network Issue Summary - June 29, 2026) show
+FBody setfont
+72 688 moveto
+(Report date: June 29, 2026 \(local time UTC+02:00\)) show
+72 672 moveto
+() show
+72 656 moveto
+(Summary:) show
+72 640 moveto
+(The logs show intermittent network instability. Most failures were upstream internet) show
+72 624 moveto
+(losses with the gateway still reachable. A smaller number were local gateway or routing) show
+72 608 moveto
+(failures, which point to instability between the machine and the router.) show
+72 592 moveto
+() show
+72 576 moveto
+(Event Table:) show
+72 560 moveto
+(Time       Type         Meaning) show
+72 544 moveto
+(---------- ------------ ------------------------------------------------------------) show
+72 528 moveto
+(12:56:13   gateway      Gateway 192.168.2.1 unreachable from WSL. Local path/router) show
+72 512 moveto
+(                        issue.) show
+72 496 moveto
+(12:57:08   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 480 moveto
+(12:58:38   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 464 moveto
+(12:59:13   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 448 moveto
+(12:59:35   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 432 moveto
+(12:59:45   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 416 moveto
+(13:02:55   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 400 moveto
+(13:03:12   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 384 moveto
+(13:03:34   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 368 moveto
+(13:06:45   routing      Default route disappeared briefly; restored at 13:06:47.) show
+72 352 moveto
+(13:09:55   gateway      Gateway unreachable from WSL. Local path/router issue.) show
+72 336 moveto
+(13:11:10   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 320 moveto
+(13:11:43   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 304 moveto
+(13:13:34   gateway+dns  Gateway unreachable and DNS timed out; restored at 13:13:36.) show
+72 288 moveto
+(13:14:33   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 272 moveto
+(13:15:53   internet     Gateway reachable and DNS OK, but external internet failed.) show
+72 256 moveto
+() show
+72 240 moveto
+(Overall conclusion:) show
+72 224 moveto
+(This is not mainly a clean Wi-Fi adapter disconnect. The WSL interface stayed up most) show
+72 208 moveto
+(of the time, kept the same IP address, and often still had DNS and the default route.) show
+72 192 moveto
+(The strongest evidence points to mixed local gateway instability plus repeated upstream) show
+72 176 moveto
+(internet loss beyond the router.) show
+showpage
+%%EOF

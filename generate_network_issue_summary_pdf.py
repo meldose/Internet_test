@@ -8,6 +8,8 @@ from pathlib import Path
 
 OUTPUT_PDF = Path("network_issue_summary_20260629_readable.pdf")
 OUTPUT_PS = Path("network_issue_summary_20260629_readable.ps")
+OUTPUT_TABLE_PDF = Path("network_issue_summary_20260629_table.pdf")
+OUTPUT_TABLE_PS = Path("network_issue_summary_20260629_table.ps")
 
 PAGE_WIDTH = 612
 PAGE_HEIGHT = 792
@@ -69,6 +71,59 @@ def build_postscript(lines: list[str]) -> str:
     return "\n".join(parts) + "\n"
 
 
+def build_table_report_lines() -> list[str]:
+    rows = [
+        ("12:56:13", "gateway", "Gateway 192.168.2.1 unreachable from WSL. Local path/router issue."),
+        ("12:57:08", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("12:58:38", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("12:59:13", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("12:59:35", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("12:59:45", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("13:02:55", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("13:03:12", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("13:03:34", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("13:06:45", "routing", "Default route disappeared briefly; restored at 13:06:47."),
+        ("13:09:55", "gateway", "Gateway unreachable from WSL. Local path/router issue."),
+        ("13:11:10", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("13:11:43", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("13:13:34", "gateway+dns", "Gateway unreachable and DNS timed out; restored at 13:13:36."),
+        ("13:14:33", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+        ("13:15:53", "internet", "Gateway reachable and DNS OK, but external internet failed."),
+    ]
+
+    lines = [
+        "Report date: June 29, 2026 (local time UTC+02:00)",
+        "",
+        "Summary:",
+        "The logs show intermittent network instability. Most failures were upstream internet",
+        "losses with the gateway still reachable. A smaller number were local gateway or routing",
+        "failures, which point to instability between the machine and the router.",
+        "",
+        "Event Table:",
+        "Time       Type         Meaning",
+        "---------- ------------ ------------------------------------------------------------",
+    ]
+
+    for event_time, event_type, meaning in rows:
+        wrapped = textwrap.wrap(meaning, width=60) or [""]
+        first = f"{event_time:<10} {event_type:<12} {wrapped[0]}"
+        lines.append(first)
+        for continuation in wrapped[1:]:
+            lines.append(f"{'':<10} {'':<12} {continuation}")
+
+    lines.extend(
+        [
+            "",
+            "Overall conclusion:",
+            "This is not mainly a clean Wi-Fi adapter disconnect. The WSL interface stayed up most",
+            "of the time, kept the same IP address, and often still had DNS and the default route.",
+            "The strongest evidence points to mixed local gateway instability plus repeated upstream",
+            "internet loss beyond the router.",
+        ]
+    )
+    return lines
+
+
 def main() -> None:
     paragraphs = [
         "Summary for the network logs captured on June 29, 2026.",
@@ -87,6 +142,20 @@ def main() -> None:
         "or routing issue.",
         "- At least once, ping, gateway, and DNS all failed together, then recovered within about 2 seconds. "
         "This is a stronger local outage event.",
+        "",
+        "Times when internet was lost while the gateway was still reachable:",
+        "- 12:57:08",
+        "- 12:58:38",
+        "- 12:59:13",
+        "- 12:59:35",
+        "- 12:59:45",
+        "- 13:02:55",
+        "- 13:03:12",
+        "- 13:03:34",
+        "- 13:11:10",
+        "- 13:11:43",
+        "- 13:14:33",
+        "- 13:15:53",
         "",
         "Most important outage times:",
         "- 12:56:13: gateway unreachable.",
@@ -113,6 +182,10 @@ def main() -> None:
 
     OUTPUT_PS.write_text(build_postscript(wrapped_lines), encoding="utf-8")
     subprocess.run(["ps2pdf", str(OUTPUT_PS), str(OUTPUT_PDF)], check=True)
+
+    table_lines = build_table_report_lines()
+    OUTPUT_TABLE_PS.write_text(build_postscript(table_lines), encoding="utf-8")
+    subprocess.run(["ps2pdf", str(OUTPUT_TABLE_PS), str(OUTPUT_TABLE_PDF)], check=True)
 
 
 if __name__ == "__main__":
