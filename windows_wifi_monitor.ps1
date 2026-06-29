@@ -52,7 +52,7 @@ function Parse-NetshInterfaces {
             if ($null -ne $current) {
                 $entries.Add($current)
             }
-            $current = [ordered]@{
+            $current = @{
                 Name = $Matches[1].Trim()
                 RawLines = New-Object System.Collections.Generic.List[string]
             }
@@ -86,11 +86,6 @@ function Get-WifiAdapterName {
         return $RequestedName
     }
 
-    $reports = Parse-NetshInterfaces
-    if ($reports.Count -gt 0) {
-        return [string]$reports[0]["Name"]
-    }
-
     $adapter = Get-NetAdapter -Physical -ErrorAction SilentlyContinue |
         Where-Object {
             $_.Name -match 'wi-?fi|wlan|wireless' -or
@@ -101,6 +96,14 @@ function Get-WifiAdapterName {
 
     if ($null -ne $adapter) {
         return [string]$adapter.Name
+    }
+
+    $reports = Parse-NetshInterfaces
+    if ($reports -and $reports.Count -gt 0) {
+        $firstReport = $reports | Where-Object { $null -ne $_ -and $_.Contains("Name") } | Select-Object -First 1
+        if ($null -ne $firstReport) {
+            return [string]$firstReport["Name"]
+        }
     }
 
     throw "No Windows Wi-Fi adapter detected. Pass one explicitly with -AdapterName."
@@ -180,6 +183,21 @@ function Get-MapValue {
     return ""
 }
 
+function Get-AnyMapValue {
+    param(
+        [System.Collections.IDictionary]$Map,
+        [string[]]$Keys
+    )
+
+    foreach ($key in $Keys) {
+        $value = Get-MapValue -Map $Map -Key $key
+        if ($value) {
+            return $value
+        }
+    }
+    return ""
+}
+
 function Get-WifiSnapshot {
     param([string]$Name)
 
@@ -198,19 +216,19 @@ function Get-WifiSnapshot {
     $transmitRateMbps = ""
 
     if ($null -ne $report) {
-        $state = Get-MapValue -Map $report -Key "State"
-        $ssid = Get-MapValue -Map $report -Key "SSID"
-        $bssid = Get-MapValue -Map $report -Key "BSSID"
-        $signal = Get-MapValue -Map $report -Key "Signal"
-        $radio = Get-MapValue -Map $report -Key "Radio type"
-        $channel = Get-MapValue -Map $report -Key "Channel"
-        $receiveRateMbps = Get-MapValue -Map $report -Key "Receive rate (Mbps)"
-        $transmitRateMbps = Get-MapValue -Map $report -Key "Transmit rate (Mbps)"
+        $state = Get-AnyMapValue -Map $report -Keys @("State", "Status")
+        $ssid = Get-AnyMapValue -Map $report -Keys @("SSID")
+        $bssid = Get-AnyMapValue -Map $report -Keys @("BSSID", "AP BSSID")
+        $signal = Get-AnyMapValue -Map $report -Keys @("Signal")
+        $radio = Get-AnyMapValue -Map $report -Keys @("Radio type", "Funktyp")
+        $channel = Get-AnyMapValue -Map $report -Keys @("Channel", "Kanal")
+        $receiveRateMbps = Get-AnyMapValue -Map $report -Keys @("Receive rate (Mbps)", "Empfangsrate (MBit/s)")
+        $transmitRateMbps = Get-AnyMapValue -Map $report -Keys @("Transmit rate (Mbps)", "Übertragungsrate (MBit/s)")
     }
 
     $connected = $false
     if ($state) {
-        $connected = ($state -match '^connected$')
+        $connected = ($state -match '^(connected|verbunden)$')
     } elseif ($null -ne $adapter) {
         $connected = ($adapter.Status -eq "Up")
     }

@@ -1,0 +1,4 @@
+﻿2026-06-29 11:16:03,974 INFO Starting Windows Wi-Fi monitor on adapter=WLAN
+2026-06-29 11:16:04,006 INFO Text log: \\wsl.localhost\Ubuntu\home\melodse\Internet_test\windows_wifi_monitor_WLAN_20260629_111603.log
+2026-06-29 11:16:04,006 INFO JSONL log: \\wsl.localhost\Ubuntu\home\melodse\Internet_test\windows_wifi_monitor_WLAN_20260629_111603.jsonl
+2026-06-29 11:16:09,606 INFO Initial snapshot: adapter=WLAN connected=True state='Verbunden' ssid='MagentaWLAN-8OCL' bssid='54:47:cc:95:bb:af' signal='75%' ipv4='192.168.2.36' gateway='192.168.2.1'
